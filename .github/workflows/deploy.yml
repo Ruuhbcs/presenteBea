@@ -1,9 +1,10 @@
 
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (disabled automatic push)
 
+# Disabled automatic push triggers to avoid duplicate runs.
+# Use manual dispatch if needed.
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: read
