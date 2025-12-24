@@ -1,0 +1,7 @@
+{
+  "name": "Gift Card Surprise - Elegance",
+  "description": "A luxury-styled gift card reveal page featuring deep emerald and gold accents, designed for mobile QR code access.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
