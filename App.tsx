@@ -5,8 +5,8 @@ import { APP_DEFAULTS, DecorativeGoldLeaf, FloatingHeart } from './constants';
 
 const GoldDust: React.FC<{ count?: number }> = ({ count = 160 }) => {
   const particles = Array.from({ length: count }).map((_, i) => {
-    const type = i % 12 === 0 ? 'lash' : i % 5 === 0 ? 'star' : 'dot';
-    const size = type === 'lash' ? 26 : type === 'star' ? 10 + Math.round(Math.random() * 12) : 4 + Math.round(Math.random() * 8);
+    const type = i % 5 === 0 ? 'star' : 'dot';
+    const size = type === 'star' ? 10 + Math.round(Math.random() * 12) : 4 + Math.round(Math.random() * 8);
     const left = Math.random() * 100;
     const delay = Math.random() * 10;
     const duration = 5 + Math.random() * 12;
@@ -17,29 +17,6 @@ const GoldDust: React.FC<{ count?: number }> = ({ count = 160 }) => {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-10">
       {particles.map((p) => {
-        if (p.type === 'lash') {
-          return (
-            <img
-              key={p.id}
-              src="/src/assets/icons/eyelash.svg"
-              alt="lash"
-              className="absolute glitter-lash"
-              style={{
-                width: p.size,
-                height: p.size,
-                left: `${p.left}%`,
-                top: `${-8 + Math.random() * 16}%`,
-                opacity: p.opacity,
-                animationDelay: `${p.delay}s`,
-                animationDuration: `${p.duration}s`,
-                transform: `rotate(${Math.random() * 40 - 20}deg)`,
-                filter: 'drop-shadow(0 4px 10px rgba(191,149,63,0.95))',
-                mixBlendMode: 'screen',
-              }}
-            />
-          );
-        }
-
         if (p.type === 'star') {
           return (
             <div
@@ -171,7 +148,6 @@ const App: React.FC = () => {
         @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)} }
         .glitter-dot{animation-name:particle;animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both;will-change:transform,opacity}
         .glitter-star{animation-name:particle;animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both;will-change:transform,opacity}
-        .glitter-lash{animation-name:particle;animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both;will-change:transform,opacity}
         .animate-fade-in{animation:fade-in .9s ease-out forwards}
         .animate-scale-up{animation:scale-up .9s cubic-bezier(.16,1,.3,1) forwards}
         .animate-float{animation:float 5s ease-in-out infinite}
